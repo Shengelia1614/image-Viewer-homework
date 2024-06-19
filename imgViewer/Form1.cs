@@ -49,6 +49,8 @@ namespace imgViewer
         //for checkbox that decides if index loops instead of just stopping at the last picture
         bool loop=false;
 
+        int ms=700;
+
         //consturctor for form (this project uses autegenerated forms code)
         public Form1()
         {
@@ -392,7 +394,7 @@ namespace imgViewer
             Set_Current_Image(index);
             for (int i = 0; i < CurrImageList.Length && SlideShow_Toggle!=false; i++)
             {
-                wait(700);
+                wait(ms);
                 try
                 {
                   Next_Click(sender, e);
@@ -483,6 +485,17 @@ namespace imgViewer
 
         }
 
-        
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.BackColor = Color.White;
+            //int temp;
+            bool temp = int.TryParse(textBox1.Text, out int result);
+            
+            if(temp==true)ms = result;
+            else
+            {
+                textBox1.BackColor = Color.Red;
+            }
+        }
     }
 }
